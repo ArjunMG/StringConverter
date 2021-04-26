@@ -1,0 +1,85 @@
+<html>
+    <head> 
+      <title>
+        String Converter
+      </title> 
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+      <script src="./script.js"></script>
+      <script src="./stringFunctions.js"></script>
+      <link rel="stylesheet" href="./style.css">
+      <link rel="stylesheet" href="./string-functions.css">
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    </head>
+<body>
+  <nav id="top-bar" class="nav-bar invert">
+    <div class="container">
+      <a class="nav-head" href="">
+        <img height="30px" width="30px" src="data:image/svg+xml;base64,PHN2ZyBpZD0iQ2FwYV8xIiBlbmFibGUtYmFja2dyb3VuZD0ibmV3IDAgMCA1MTIgNTEyIiBoZWlnaHQ9IjUxMiIgdmlld0JveD0iMCAwIDUxMiA1MTIiIHdpZHRoPSI1MTIiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGc+PHBhdGggZD0ibTMzNyAxOTEuMDU3djMzLjg4YzAgMTYuNjMtMTMuNDkgMzAuMTItMzAuMTIgMzAuMTJoLTM1Ljg4djMwLjEybC0xNSAxNi41MiAxNSAxNy4zNnYzOC42MDdoLTMwdi0xMzYuNDg3YzAtMTEuMTIgNi4wMy0yMC44MyAxNS0yNi4wNSA0LjQ0LTIuNTkgOS42LTQuMDcgMTUuMTItNC4wN3oiIGZpbGw9IiM2ZmUxMDAiLz48cGF0aCBkPSJtMjU2IDM1Ny42NjN2LTU1Ljk2NmwxNSAxNy4zNnYzOC42MDZ6IiBmaWxsPSIjMDBjMDAwIi8+PHBhdGggZD0ibTMzNyAxOTEuMDU3djMzLjg4YzAgMTYuNjMtMTMuNDkgMzAuMTItMzAuMTIgMzAuMTJoLTM1Ljg4djMwLjEybC0xNSAxNi41MnYtMTA2LjU3YzQuNDQtMi41OSA5LjYtNC4wNyAxNS4xMi00LjA3eiIgZmlsbD0iIzAwYzAwMCIvPjxwYXRoIGQ9Im0yNzEgMjg1LjE3N3YzMy44OGgtNjUuODhjLTE2LjYzIDAtMzAuMTItMTMuNDktMzAuMTItMzAuMTJ2LTMzLjg4aDY1Ljg4YzUuNTIgMCAxMC42OCAxLjQ4IDE1LjEyIDQuMDcgOC45NyA1LjIyIDE1IDE0LjkzIDE1IDI2LjA1eiIgZmlsbD0iI2M3ZmYwMCIvPjxwYXRoIGQ9Im0yNzEgMjg1LjE3N3YzMy44OGgtMTV2LTU5LjkzYzguOTcgNS4yMiAxNSAxNC45MyAxNSAyNi4wNXoiIGZpbGw9IiM2ZmUxMDAiLz48cGF0aCBkPSJtMjU2IDQ0OHY2NGMtMTQxLjM4IDAtMjU2LTExNC42Mi0yNTYtMjU2IDAtNzAuNjkgMjguNjUtMTM0LjY5IDc0Ljk4LTE4MS4wMmwtMzEuNy0zMS43IDExNi41My03Ljg2LTcuODYgMTE2LjUzLTMxLjcxLTMxLjcxaC0uMDFjLTM0Ljc0IDM0Ljc0LTU2LjIzIDgyLjc0LTU2LjIzIDEzNS43NiAwIDEwNi4wNCA4NS45NiAxOTIgMTkyIDE5MnoiIGZpbGw9IiM2ZmUxMDAiLz48cGF0aCBkPSJtNDM3LjAyIDQzNy4wMiAzMS43MiAzMS43Mi0xMTYuNTQgNy44NSA3Ljg2LTExNi41MyAzMS43IDMxLjdjMzQuNzUtMzQuNzQgNTYuMjQtODIuNzQgNTYuMjQtMTM1Ljc2IDAtMTA2LjA0LTg1Ljk2LTE5Mi0xOTItMTkydi02NGMxNDEuMzggMCAyNTYgMTE0LjYyIDI1NiAyNTYgMCA3MC42OS0yOC42NSAxMzQuNjktNzQuOTggMTgxLjAyeiIgZmlsbD0iIzAwYzAwMCIvPjwvZz48L3N2Zz4=" />
+        String Converter
+      </a>
+    </div>
+  </nav>
+
+    <div class="container main-body">
+      <div class="row">
+        <div class="col-md-4 in-box">
+          <span style="font-size: 20px;">ASCII</span><br>
+          <textarea name="asciiString" id="asciiString" placeholder="ASCII"></textarea>
+          <br>
+          <button class="btn btn-success" onclick="convert(document.getElementById('asciiString').value, 'ascii')">Convert</button>
+          <button class="btn btn-info" onclick="copyText(document.getElementById('asciiString'))">Copy</button>
+        </div>
+
+        <div class="col-md-4 in-box">
+          <span style="font-size: 20px;">HEX</span><br>
+          <textarea name="hexString" id="hexString" placeholder="HEX"></textarea>
+          <br>
+          <button class="btn btn-success" onclick="convert(document.getElementById('hexString').value, 'hex')">Convert</button>
+          <button class="btn btn-info" onclick="copyText(document.getElementById('hexString'))">Copy</button>
+          <button class="btn btn-default" onclick="removeWhiteSpace(document.getElementById('hexString'))">Remove Space</button>
+        </div>
+
+        <div class="col-md-4 in-box">
+          <span style="font-size: 20px;">Decimal</span><br>
+          <textarea name="decString" id="decString" placeholder="Decimal"></textarea>
+          <br>
+          <button class="btn btn-success" onclick="convert(document.getElementById('decString').value, 'decimal')">Convert</button>
+          <button class="btn btn-info" onclick="copyText(document.getElementById('decString'))">Copy</button>
+        </div>        
+      </div>
+
+      <div class="row">
+        <div class="col-md-4 in-box">
+          <span style="font-size: 20px;">Base64</span><br>
+          <textarea name="base64String" id="base64String" placeholder="Base64"></textarea>
+          <br>
+          <button class="btn btn-success" onclick="convert(document.getElementById('base64String').value, 'base64')">Convert</button>
+          <button class="btn btn-info" onclick="copyText(document.getElementById('base64String'))">Copy</button>
+        </div>
+
+        <div class="col-md-4 in-box">
+          <span style="font-size: 20px;">Binary</span><br>
+          <textarea name="binaryString" id="binaryString" placeholder="Binary"></textarea>
+          <br>
+          <button class="btn btn-success" onclick="convert(document.getElementById('binaryString').value, 'binary')">Convert</button>
+          <button class="btn btn-info" onclick="copyText(document.getElementById('binaryString'))">Copy</button>
+          <button class="btn btn-default" onclick="removeWhiteSpace(document.getElementById('binaryString'))">Remove Space</button>
+        </div>
+      </div>
+        
+      <div id="notify">Hello there!</div>
+    </div>
+  </body>
+  <footer class="invert">
+    Designed and developed by Arjun M G <br>
+    <!-- Visit my portfolio 
+    <a href="../index.html">here</a> -->
+    <a href="https://www.linkedin.com/in/arjunmg3" class="fa fa-linkedin" target="_blank"></a>
+    <a href="https://www.instagram.com/arjun_mg_" class="fa fa-instagram" target="_blank"></a>
+    <a href="https://www.twitter.com/arjunwyd" class="fa fa-twitter" target="_blank"></a>
+  </footer>
+</html>
