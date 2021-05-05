@@ -147,6 +147,8 @@ function convertString(inputString, inputType) {
 //-----------------------HEX & Binary-------------------------
 var hexToBinary = (hexString) => {
     hexStringValue = removeChar(hexString, ' ').trim();
+    hexStringValue = removeChar(hexStringValue, ',');
+
     var binString = '';
 
     for (var i = 0; i < hexStringValue.length; i += 2) {
@@ -202,6 +204,8 @@ function asciiToHex(inputString) {
 function hexToAscii(hexString) {
     try {
         var hex = removeChar(hexString.toString(), ' ');
+        hex = removeChar(hex, ',');
+
         var asciiString = '';
 
         for (var n = 0; n < hex.length; n += 2) {
@@ -220,7 +224,11 @@ function hexToAscii(hexString) {
 
 function hexToDecimal(inputString) {
 
-    var hexString = inputString.toString();
+    var splitText = inputString.toString().split(',');
+    var hexString = splitText.join(' ');
+
+    console.log(hexString);
+
     var decimalString = '';
 
     var hexArray = hexString.split(' ');
