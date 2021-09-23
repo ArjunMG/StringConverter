@@ -148,6 +148,10 @@ function convertString(inputString, inputType) {
 var hexToBinary = (hexString) => {
     hexStringValue = removeChar(hexString, ' ').trim();
     hexStringValue = removeChar(hexStringValue, ',');
+    
+    if(hexStringValue.length % 2 === 1){
+        hexStringValue = '0' + hexStringValue
+    }
 
     var binString = '';
 
