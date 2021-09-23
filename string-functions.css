@@ -1,17 +1,17 @@
-.in-box{
-    padding: 20px;
+.in-box {
+  padding: 20px;
 }
-#notify{
-    position: fixed;
-    top: 100px;
-    min-width: 20%;
-    top: 75%;
-    left: 40%;
-    background-color: rgba(0, 0, 0, 0.692);
-    color: rgb(238, 238, 238);
-    z-index: 1;
-    text-align: center;
-    padding: 10px 30px;
-    visibility: hidden;
-    /* border-radius: 10px; */
+#notify {
+  position: fixed;
+  top: 100px;
+  min-width: 20%;
+  top: 75%;
+  left: 40%;
+  background-color: rgba(0, 0, 0, 0.692);
+  color: rgb(238, 238, 238);
+  z-index: 1;
+  text-align: center;
+  padding: 10px 30px;
+  visibility: hidden;
+  /* border-radius: 10px; */
 }
