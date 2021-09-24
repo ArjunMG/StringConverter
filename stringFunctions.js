@@ -1,30 +1,29 @@
 var convert = (inputString, inputType) => {
-  console.log(inputString + ":" + inputType);
-
   let resp = convertString(inputString.toString(), inputType.toString());
-  // let resp = JSON.parse(result);
-  //console.log(resp);
-
   document.getElementById("hexString").value = resp.hexString;
+
   document.getElementById("asciiString").value = resp.asciiString;
+
   document.getElementById("decString").value = resp.decimalString;
+
   document.getElementById("base64String").value = resp.base64String;
+
   document.getElementById("binaryString").value = resp.binaryString;
 };
 
 var copyText = (elem) => {
   elem.select();
+
   elem.setSelectionRange(0, 9999);
-  document.execCommand("copy");
+
+  navigator.clipboard.writeText(elem.value);
 };
 
-var removeWhiteSpace = (elem) => {
-  console.log(elem.value);
-  elem.value = removeChar(elem.value, " ");
-};
+var removeWhiteSpace = (elem) => (elem.value = removeChar(elem.value, " "));
 
 var removeChar = (text, character) => {
   var splitText = text.split(character);
+
   return splitText.join("");
 };
 
@@ -128,55 +127,48 @@ function convertString(inputString, inputType) {
       inputType: inputType,
     };
   }
-
-  console.log(response);
-  // Return the response constant
   return response;
 }
 
 //-----------------------HEX & Binary-------------------------
 var hexToBinary = (hexString) => {
   hexStringValue = removeChar(hexString, " ").trim();
+
   hexStringValue = removeChar(hexStringValue, ",");
 
-  if (hexStringValue.length % 2 === 1) {
-    hexStringValue = "0" + hexStringValue;
-  }
+  if (hexStringValue.length % 2 === 1) hexStringValue = "0" + hexStringValue;
 
   var binString = "";
 
-  for (var i = 0; i < hexStringValue.length; i += 2) {
+  for (var i = 0; i < hexStringValue.length; i += 2)
     binString +=
       padLeft(parseInt(hexStringValue.substr(i, 2), 16).toString(2), "0", 8) +
       " ";
-  }
 
   return binString.trim();
 };
 
 var padLeft = (text, character, minLength) => {
-  if (text.length >= minLength) {
-    console.log("string has minimum length");
-    return text;
-  }
+  if (text.length >= minLength) return text;
 
   var addLen = minLength - text.length;
+
   var appendText = "";
-  for (i = addLen; i > 0; i--) {
-    appendText += character;
-  }
+
+  for (i = addLen; i > 0; i--) appendText += character;
 
   return appendText + text;
 };
 
 var binaryToHex = (binaryString) => {
   var binString = padLeft(removeChar(binaryString.toString(), " "), "0", 8);
+
   var hexArray = [];
+
   var hexString = "";
 
-  for (i = 0; i < binString.length / 8; i++) {
+  for (i = 0; i < binString.length / 8; i++)
     hexArray[i] = parseInt(binString.substr(8 * i, 8), 2).toString(16);
-  }
 
   hexArray.forEach((element) => {
     hexString += padLeft(element.toString(), "0", 2) + " ";
@@ -200,13 +192,13 @@ function asciiToHex(inputString) {
 function hexToAscii(hexString) {
   try {
     var hex = removeChar(hexString.toString(), " ");
+
     hex = removeChar(hex, ",");
 
     var asciiString = "";
 
-    for (var n = 0; n < hex.length; n += 2) {
+    for (var n = 0; n < hex.length; n += 2)
       asciiString += String.fromCharCode(parseInt(hex.substr(n, 2), 16));
-    }
 
     return asciiString;
   } catch (e) {
@@ -218,9 +210,8 @@ function hexToAscii(hexString) {
 
 function hexToDecimal(inputString) {
   var splitText = inputString.toString().split(",");
-  var hexString = splitText.join(" ");
 
-  console.log(hexString);
+  var hexString = splitText.join(" ");
 
   var decimalString = "";
 
@@ -228,9 +219,8 @@ function hexToDecimal(inputString) {
 
   for (var i = 0; i < hexArray.length; i++) {
     var hexVal = parseInt(hexArray[i], 16);
-    if (!isNaN(hexVal)) {
-      decimalString += hexVal.toString(10) + " ";
-    }
+
+    if (!isNaN(hexVal)) decimalString += hexVal.toString(10) + " ";
   }
 
   return decimalString.trim();
@@ -238,14 +228,14 @@ function hexToDecimal(inputString) {
 
 function decimalToHex(inputString) {
   var hexString = "";
+
   var decString = inputString.toString();
+
   var splitStr = decString.split(" ");
 
   for (var i = 0; i < splitStr.length; i++) {
     var dec = parseInt(splitStr[i]);
-    if (!isNaN(dec)) {
-      hexString += padLeft(dec.toString(16), "0", 2) + " ";
-    }
+    if (!isNaN(dec)) hexString += padLeft(dec.toString(16), "0", 2) + " ";
   }
 
   return hexString.trim();
